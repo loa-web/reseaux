@@ -296,6 +296,31 @@
  
     /* AUDIO */
     audio { display: none; }
+ 
+    /* TILT CARD */
+    .profile {
+      transform-style: preserve-3d;
+      transition: transform 0.08s linear;
+      will-change: transform;
+    }
+ 
+    /* TRAIL DOT */
+    .trail-dot {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: white;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      animation: trailFade 0.6s ease forwards;
+    }
+ 
+    @keyframes trailFade {
+      0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.2); }
+    }
   </style>
 </head>
 <body>
@@ -400,9 +425,46 @@
  
   // CURSOR
   const cursor = document.getElementById("cursor");
+ 
+  // TILT
+  const profile = document.querySelector(".profile");
+  const cx = () => window.innerWidth / 2;
+  const cy = () => window.innerHeight / 2;
+ 
+  // TRAIL
+  let lastTrail = 0;
+ 
   window.addEventListener("mousemove", e => {
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
+ 
+    // 3D tilt
+    const dx = (e.clientX - cx()) / cx();
+    const dy = (e.clientY - cy()) / cy();
+    const rotX = -dy * 12;
+    const rotY =  dx * 12;
+    profile.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+ 
+    // Trail dots
+    const now = Date.now();
+    if (now - lastTrail > 40) {
+      lastTrail = now;
+      const dot = document.createElement("div");
+      dot.className = "trail-dot";
+      dot.style.left = e.clientX + "px";
+      dot.style.top  = e.clientY + "px";
+      // randomize size slightly
+      const s = 2 + Math.random() * 4;
+      dot.style.width  = s + "px";
+      dot.style.height = s + "px";
+      document.body.appendChild(dot);
+      setTimeout(() => dot.remove(), 600);
+    }
+  });
+ 
+  // Reset tilt on mouse leave
+  document.addEventListener("mouseleave", () => {
+    profile.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
   });
  
   // STARS
