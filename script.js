@@ -14,46 +14,46 @@ window.addEventListener("load", () => {
 
 })
   
-  // MUSIC
-  const audio = document.getElementById("audio");
-  const musicBtn = document.getElementById("music-btn");
-  let playing = false;
+ // MUSIC
+const audio = document.getElementById("audio");
+const musicBtn = document.getElementById("music-btn");
 
-  // volume de base
-  audio.volume = 0.5;
+// volume
+audio.volume = 0.5;
 
-  // tente autoplay après interaction utilisateur
-  function startMusic() {
-    audio.play().then(() => {
-      playing = true;
-      musicBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-    }).catch(() => {
-      console.log("Autoplay bloqué par le navigateur");
-    });
+// état réel de la musique
+let playing = true;
 
-    // enlève les listeners après le premier clic
-    document.removeEventListener("click", startMusic);
-    document.removeEventListener("keydown", startMusic);
+// essaie autoplay
+window.addEventListener("load", () => {
+  audio.play().catch(() => {
+    playing = false;
+    musicBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+  });
+});
+
+// bouton
+musicBtn.addEventListener("click", () => {
+
+  if (playing) {
+
+    audio.pause();
+    playing = false;
+
+    musicBtn.innerHTML =
+      '<i class="fa-solid fa-volume-xmark"></i>';
+
+  } else {
+
+    audio.play();
+
+    playing = true;
+
+    musicBtn.innerHTML =
+      '<i class="fa-solid fa-volume-high"></i>';
   }
 
-  // démarre dès premier clic/touche
-  document.addEventListener("click", startMusic);
-  document.addEventListener("keydown", startMusic);
-
-  // bouton ON/OFF
-  musicBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    if (playing) {
-      audio.pause();
-      playing = false;
-      musicBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-    } else {
-      audio.play();
-      playing = true;
-      musicBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-    }
-  });
+});
 
 // TYPING EFFECT
 
