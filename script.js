@@ -447,11 +447,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   rainButton.addEventListener('click', () => {
-    switchTheme('assets/rain_background.mov', rainMusic, 'rain-theme', snowOverlay, true);
+    switchTheme('assets/rain_background.mp4', rainMusic, 'rain-theme', snowOverlay, true);
   });
   rainButton.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    switchTheme('assets/rain_background.mov', rainMusic, 'rain-theme', snowOverlay, true);
+    switchTheme('assets/rain_background.mp4', rainMusic, 'rain-theme', snowOverlay, true);
   });
 
   animeButton.addEventListener('click', () => {
