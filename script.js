@@ -463,11 +463,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   carButton.addEventListener('click', () => {
-    switchTheme('assets/https://res.cloudinary.com/dq8yz01tu/video/upload/v1779715914/car_background_ifqu8c.mp4', carMusic, 'car-theme');
+    switchTheme('https://res.cloudinary.com/dq8yz01tu/video/upload/v1779715914/car_background_ifqu8c.mp4', carMusic, 'car-theme');
   });
   carButton.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    switchTheme('assets/https://res.cloudinary.com/dq8yz01tu/video/upload/v1779715914/car_background_ifqu8c.mp4', carMusic, 'car-theme');
+    switchTheme('https://res.cloudinary.com/dq8yz01tu/video/upload/v1779715914/car_background_ifqu8c.mp4', carMusic, 'car-theme');
   });
 
  
