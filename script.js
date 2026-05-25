@@ -447,11 +447,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   rainButton.addEventListener('click', () => {
-    switchTheme('assets/rain_background.mov', rainMusic, 'rain-theme', snowOverlay, true);
+    switchTheme('assets/https://res.cloudinary.com/dq8yz01tu/video/upload/v1779714440/rain_background_dglqdx.mov', rainMusic, 'rain-theme', snowOverlay, true);
   });
   rainButton.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    switchTheme('assets/rain_background.mov', rainMusic, 'rain-theme', snowOverlay, true);
+    switchTheme('assets/https://res.cloudinary.com/dq8yz01tu/video/upload/v1779714440/rain_background_dglqdx.mov', rainMusic, 'rain-theme', snowOverlay, true);
   });
 
   animeButton.addEventListener('click', () => {
@@ -463,11 +463,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   carButton.addEventListener('click', () => {
-    switchTheme('assets/car_background.mp4', carMusic, 'car-theme');
+    switchTheme('assets/https://res.cloudinary.com/dq8yz01tu/video/upload/v1779713350/car_background_mbqywl.mp4', carMusic, 'car-theme');
   });
   carButton.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    switchTheme('assets/car_background.mp4', carMusic, 'car-theme');
+    switchTheme('assets/https://res.cloudinary.com/dq8yz01tu/video/upload/v1779713350/car_background_mbqywl.mp4', carMusic, 'car-theme');
   });
 
  
