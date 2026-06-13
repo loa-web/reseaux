@@ -264,6 +264,10 @@ body.car-theme {
 }
 
 
+#results-button-container {
+  display: none !important;
+}
+
 #home-theme, #hacker-theme, #rain-theme, #anime-theme, #car-theme, #results-theme {
   background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
   touch-action: manipulation;
